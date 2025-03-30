@@ -1,0 +1,251 @@
+{%extends "base.html"%}
+{%block title%}Photo Gallery{%endblock%}
+{% block head %}
+{{ super() }}
+<style>
+    
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+.page_content {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+h1, h2 {
+    color: #4caf50;
+    margin-top: 0;
+}
+
+.about-section {
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid #4caf50;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center; /* Add this if needed */
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+.gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .gallery-item img {
+            width: 100%; /* Ensures the width takes up the container */
+            height: 250px;  /* Set a fixed height */
+            object-fit: cover; /* Ensures the image maintains its aspect ratio and fills the area */
+            border-radius: 8px;
+        }
+
+        .gallery-item p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+    /* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border: 3px solid #fff;
+    border-radius: 8px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: #ccc;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{%block page_content%}
+<div class="page_content">
+    <div class="page-header">
+        <h1 style="text-align: center;">Photo Gallery</h1>
+        <div class="gallery-container">
+            <div class ="gallery-item">
+                <img src ="{{url_for('static',filename ='gallery/With JNTUH Officials.jpg')}}" alt ="With Balunaik Sir"/>
+                <p>With Balu Naik Sir, JNTUHCEM Second Principal</p>
+            </div>
+            <div class = "gallery-item">
+                <img src = "{{url_for('static', filename='gallery/With Chandralingam Sir at JNTUHCEM.jpg')}}" alt ="With Chandra lingam sir"/>
+                <p>With Chandra Lingam sir, JNTUHCEM First Principal</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='gallery/varacmpf.jpg') }}" alt="With Vara Prasad Sir" />
+                <p>WITH VARA PRASAD SIR AT CMPF OFFICE</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/With my Mentor V Sudarshan EX DPO Peddapalli.jpg')}}" alt="with Sudarshan sir"/>
+                <p>With V Sudarshan Sir EX DPO Peddapalli</p>
+            </div>
+            <div class ="gallery-item">
+                <img src ="{{url_for('static',filename ='gallery/razak.jpg')}}" alt ="ADPM first day at DPO Karimnagar Office"/>
+                <p>At DPO Office Karimnagar</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/New Parliament Hall Delhi.jpg')}}" alt="At New Parliament Bhavan"/>
+                <p>"At New Parliament Bhavan, New Delhi"</p>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <h1 style="text-align: left;">Appreciation Certificates</h1>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='gallery/Certificate by Devasena.jpg') }}" alt="Certificate from Collector Devasena" />
+                <p>Received appreciation certificate from then Collector Devasena Madam.</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='gallery/With Ex MLA Manohar.jpg') }}" alt="Certificate from Ex MLA" />
+                <p>Received appreciation certificate from then MLA Dasari Manohar Reddy Sir.</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='gallery/Democracy Award.jpg') }}" alt="Democracy Award" />
+                <p>Received Telangana State Democracy Award from Hon'ble Governor of Telangana Smt. Tamilisai Soundararajan (then Governor)</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='gallery/With Sangeetha Medam, Ex Collector Peddapalli.jpg') }}" alt="Certificate from Sangeetha Medam" />
+                <p>Received appreciation certificate from then Collector Sangeetha Madam.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/With Muzammil Khan Sir, Ex Collecor, Peddapalli & Arunasri Medam, ACLB Peddapalli.jpg')}}" alt="Memonto from MUzammil Khan on Ramagundam Assembly Election Success meet"/>
+                <p>Received a memento from then Collector Muzammil Khan Sir at the success meet of the Ramagundam Assembly Election in the presence of Ramagundam RO J. Aruna Sri Madam and ACLB Peddapalli.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/Appre from Muzzamil Khan.jpg')}}" alt="Certifcate from Muzammil Khan Sir"/>
+                <p>Received appreciation certificate from then Collector Muzammil Khan Sir</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/Group photo With ACLB Medam and Ex Collector Sir.jpg')}}" alt="Group Photo"/>
+                <p>Group Photo with then Collecot Muzammil Khan Sir and Aruna Sri Medam, ACLB Peddapalli at the success meet of the Ramagundam Assembly Election</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static', filename='gallery/Feliciation by MLA Peddapalli.jpg')}}" alt="Feliciation by Ex MLA Peddapalli"/>
+                <p>Felicitation by then MLA Peddapalli at Peddapalli Mandal Praja Parishad on the occasion of receiving the NPA Award 2022 by MPP Peddapalli. </p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static', filename='gallery/Met Former CM KCR.jpg')}}" alt="Interaction with then CM KCR"/>
+                <p>Met former Telangana CM KCR Sir on the occasion of receiving the NPA Award 2021 by MPP Dharmaram and GP Sundila of Ramagiri, along with then DPO Geetha Madam</p>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <h1 style="text-align: left;">National Panchayat Award(NPA)-2024</h1>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='gallery/NPA2024.jpg')}}" alt="NPA 2024 recived collector sir from Hon'ble President of India">
+                <p>Our Hon'ble District Collector Sir, Peddapalli, and Panchayat Secretary of GP Chillapalli, Manthani Mandal, received the National Panchayat Award from the Hon'ble President of India.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='gallery/npa with district team.jpg')}}" alt="NPA Award 2024 with District Team ">
+                <p>"Peddapalli District Team group photo with Hon'ble Collector Sir after receiving the NPA Award 2024."</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/With Kishore Sir PS Chillapalli of Manthani at Delhi.jpg')}}" alt="With NPA Award 2024"/>
+                <p>With Panchayat Secretary of GP Chillapalli, Manthani, after receiving the NPA Award 2024.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/With GP Chillapalli Award certificate at Vidyan Bhavan Delhi.jpg')}}" alt="With NPA Award 2024"/>
+                <p>With the NPA Award 2024</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/With IT Minister Sridhar Babu sir and Our District Officials.jpg')}}" alt="Met with IT Minister"/>
+                <p>Met D. Sridhar Babu Sir, Minister for Information Technology, Electronics, Communications, Industries, and Commerce, after receiving the NPA Award 2024 along with our District Officials.</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/At Vigyan Bhavan with Collector Sir.jpg')}}" alt="with District Collector Sir"/>
+                <p> With District COllector Sir at Vigyan Bhavan, Delhi</p>
+            </div>
+        </div>    
+        
+    </div>
+</div>
+
+
+{%endblock%}

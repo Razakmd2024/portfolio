@@ -1,0 +1,76 @@
+{%extends "base.html"%}
+{%block title%}Contact Us{%endblock%}
+{% block head %}
+{{ super() }}
+<style>
+    .page_content {
+        width: 50%;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+     
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    input, textarea {
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+</style>
+{% endblock %}
+
+{%block page_content%}
+<div class="page_content">
+    <h2>Contact Us</h2>
+    
+        <!-- Contact Information Section -->
+        <div class="contact-info">
+            <p><strong>Name:</strong> RAZAK MD</p>
+            <p><strong>Designation:</strong>District Project Managaer, ePanchayat</p>
+            <p><strong>Address:</strong>O/o District Panchayat Office, Peddapalli,Telangana.</p>
+            <p><strong>Email:</strong> <a href="mailto:razakmd2024@gmail.com">razakmd2024@gmail.com</a></p>
+            <!--<p><strong>Phone:</strong> <a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></p>
+            <p><strong>Address:</strong> 123, Your Street, Your City, Your State, India</p>-->
+        </div>
+        <div>
+            <p><strong>Follow Me:</strong>
+                <a href="https://linkedin.com/in/razak-md-269005b0/" target="_blank">LinkedIn</a> |
+                <a href="https://github.com/Razakmd2024" target="_blank">GitHub</a>
+            </p>
+        </div>
+    
+</div>
+{%endblock%}

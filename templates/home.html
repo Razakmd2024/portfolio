@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}HOME{% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.page_content {
+    display: flex;
+    height: 100vh;
+}
+
+.photo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ddd;
+}
+
+.photo img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    border-radius: 10px;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    margin: 0;
+    color: #333;
+}
+
+p {
+    font-size: 18px;
+    color: gray;
+    margin-top: 10px;
+}
+
+</style>
+{% endblock %}
+{% block page_content %}
+<div class="page_content">
+    <div class="photo">
+        <img src="{{ url_for('static', filename='gallery/razak.jpg') }}" alt="Razak" />
+    </div>
+    <div class="content">
+        <h1>RAZAK MD</h1>
+        <p>District Project Manager, e-Panchayat, Peddapalli</p>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}PORTFOLIO {% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    
+    
+    /* Footer Styles */
+    footer {
+        background-color: #000;
+        color: #fff;
+        text-align: center;
+        padding: 10px 0;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .navbar-inverse .navbar-nav > li > a {
+            padding: 8px 10px;
+            font-size: 14px;
+        }
+    }
+</style>
+{% endblock %}
+
+{%block navbar%}
+<div class = "navbar navbar-inverse" roll="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">RAZAK</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/about">ABOUT</a></li>
+                <li><a href="/gallery">PHOTO GALLERY</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{%endblock%}
+
+
+{%block content%}
+<div class="container">
+    {%block page_content%}{%endblock%}
+</div>
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Razak. All rights reserved.</p>
+</footer>
+<!-- Lightbox HTML placed here correctly -->
+<div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img" />
+</div>
+
+<!-- Lightbox script placed here correctly -->
+<script>
+    // Get lightbox elements
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightbox-img');
+    var lightboxClose = document.getElementsByClassName('lightbox-close')[0];
+
+    // Open lightbox on image click
+    document.querySelectorAll('.gallery-item img').forEach(img => {
+        img.addEventListener('click', function () {
+            lightbox.style.display = 'block';
+            lightboxImg.src = this.src;
+        });
+    });
+
+    // Close lightbox
+    lightboxClose.onclick = function () {
+        lightbox.style.display = 'none';
+    };
+
+    // Close lightbox when clicking outside image
+    window.onclick = function (event) {
+        if (event.target === lightbox) {
+            lightbox.style.display = 'none';
+        }
+    };
+</script>
+{% endblock %}

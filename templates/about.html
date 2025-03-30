@@ -1,0 +1,247 @@
+{%extends "base.html"%}
+{%block title%}About Me{%endblock%}
+{% block head %}
+{{ super() }}
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.page_content {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    color: #4caf50;
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.about-section {
+    text-align: justify;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid #4caf50;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+@media print {
+    body {
+        background-color: #fff;
+    }
+    .page_content {
+        box-shadow: none;
+        margin: 0;
+        padding: 20mm;
+        width: 210mm;
+        min-height: 297mm;
+        border: none;
+    }
+    .btn {
+        display: none;
+    }
+}
+
+.section-title {
+    font-size: 20px;
+    color: #4caf50;
+    cursor: pointer;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-title:hover {
+    background-color: #f1f1f1;
+}
+
+.section-content {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    line-height: 1.8;
+}
+
+.toggle-icon {
+    font-size: 18px;
+    margin-left: 10px;
+    color: #4caf50;
+    transition: transform 0.2s ease;
+}
+
+.rotate-icon {
+    transform: rotate(45deg);
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{%block page_content%}
+<div class="page_content">
+    <div class="page-header">
+        <h1>About Me</h1>
+        <p><strong>Hi, I’m RAZAK MD!</strong></p>
+        <p>
+            I am an <strong>Experienced IT and Project Manager</strong> with over <strong>14 years</strong> of expertise in 
+            data management, analysis, and technical support.
+        </p>
+    </div>
+
+    <!-- Education Section -->
+    <div class="section-title" onclick="toggleSection('education-content', 'education-icon')">
+        <strong>Education</strong>
+        <span id="education-icon" class="toggle-icon">+</span>
+    </div>
+    <div id="education-content" class="section-content">
+        <ul>
+            <li><strong>M.Tech in Computer Science and Engineering (CSE)</strong>
+                <ul>
+                    <li><strong>Institution:</strong> MTCET, Peddapalli</li>
+                    <li><strong>University:</strong> J.N.T.U.H</li>
+                </ul>
+            </li>
+            <li><strong>B.Tech in Computer Science and Engineering (CSE)</strong>
+                <ul>
+                    <li><strong>Institution:</strong> KITS, Huzurabad</li>
+                    <li><strong>University:</strong> J.N.T.U.H</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Work Experience Section -->
+    <div class="section-title" onclick="toggleSection('work-content', 'work-icon')">
+        <strong>Work Experience</strong>
+        <span id="work-icon" class="toggle-icon">+</span>
+    </div>
+    <div id="work-content" class="section-content">
+        <ul>
+            <li><strong>District Project Manager, ePanchayat</strong> - Peddapalli</li>
+            <li><strong>ADPM, ePanchayat</strong> - Karimnagar</li>
+            <li><strong>Computer Programmer</strong> - JNTUH College, Manthani</li>
+            <li><strong>Data Entry Operator</strong> - CMPF Office, Godavarikhani</li>
+        </ul>
+    </div>
+
+    <!-- Technical Skills Section -->
+    <div class="section-title" onclick="toggleSection('skills-content', 'skills-icon')">
+        <strong>Technical Skills</strong>
+        <span id="skills-icon" class="toggle-icon">+</span>
+    </div>
+    <div id="skills-content" class="section-content">
+        <ul>
+            <li>Data Analysis - Excel, Google Sheets, Python</li>
+            <li>Web Development - Flask, HTML, CSS</li>
+            <li>Data Visualization - Power BI</li>
+        </ul>
+    </div>
+
+    <!-- Project Section -->
+    <div class="section-title" onclick="toggleSection('projects-content', 'projects-icon')">
+        <strong>Project and Hackathon Participation</strong>
+        <span id="projects-icon" class="toggle-icon">+</span>
+    </div>
+    <div id="projects-content" class="section-content">
+        <ul>
+            <li>Telangana Growth Analysis - Power BI</li>
+            <li>Hackathons - Cricket Hackathon (Analytics Vidhya)</li>
+        </ul>
+    </div>
+
+    <!-- Achievements Section -->
+    <div class="section-title" onclick="toggleSection('achievements-content', 'achievements-icon')">
+        <strong>Achievements</strong>
+        <span id="achievements-icon" class="toggle-icon">+</span>
+    </div>
+    <div id="achievements-content" class="section-content">
+        <ul>
+            <li>Telangana State Democracy Award - 2020</li>
+        </ul>
+    </div>
+
+    <!-- Election Management Section -->
+    <div class="section-title" onclick="toggleSection('elections-content', 'elections-icon')">
+        <strong>Election Management Experience</strong>
+        <span id="elections-icon" class="toggle-icon">+</span>
+    </div>
+    <div id="elections-content" class="section-content">
+        <ul>
+            <li>General Election 2024 - Peddapalli</li>
+            <li>Assembly Election 2023 - Ramagundam</li>
+        </ul>
+    </div>
+
+    <a href="/" class="btn">Back to Home</a>
+</div>
+
+<button onclick="window.print()" class="btn">🖨️ Print Page</button>
+<script>
+    function toggleSection(sectionId, iconId) {
+        var content = document.getElementById(sectionId);
+        var icon = document.getElementById(iconId);
+        
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block";
+            icon.classList.add('rotate-icon');
+        } else {
+            content.style.display = "none";
+            icon.classList.remove('rotate-icon');
+        }
+    }
+</script>
+{%endblock%}

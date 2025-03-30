@@ -1,0 +1,30 @@
+from flask import Flask, render_template, request, redirect, url_for
+from flask_bootstrap import Bootstrap
+
+
+app = Flask(__name__)
+bootstrap = Bootstrap(app)
+
+app.config['SECRET_KEY']="@2025"
+app.config['SEND_FILE_MAX_AGE_DEFAULT']=0
+app.config['TIMEOUT']=300 
+
+
+@app.route("/", methods=['GET'])
+def home():
+    return render_template("home.html")
+
+@app.route("/about", methods=['GET'])
+def About():
+    return render_template("about.html")
+
+@app.route("/contact", methods=['GET'])
+def contact():
+    return render_template("contact.html")
+@app.route("/gallery")
+def gallery():
+    return render_template("gallery.html")
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
