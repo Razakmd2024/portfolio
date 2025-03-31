@@ -134,6 +134,39 @@ a:hover {
     text-decoration: none;
     cursor: pointer;
 }
+/* Lightbox Navigation Buttons */
+.lightbox-prev,
+.lightbox-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position of prev button (left side) */
+.lightbox-prev {
+    left: 20px;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Position of next button (right side) */
+.lightbox-next {
+    right: 20px;
+    border-radius: 3px 0 0 3px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
 
 
 </style>
@@ -171,6 +204,32 @@ a:hover {
                 <p>"At New Parliament Bhavan, New Delhi"</p>
             </div>
         </div>
+        <br>
+        <hr>
+        <h1 style="text-align: left;">WORK PICTURES</h1>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='gallery/RegularDuty.jpg')}}" alt="Regular Duty">
+                <p>Office Work</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{ url_for('static', filename='gallery/eGS_Cheker_Token_Generation.jpg')}}" alt="DigitalTokenMapping">
+                <p>eGS Cheker Token Generation</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/Ramagundam Election Work.jpg')}}" alt="Ramagundam Election Work">
+                <p>Ramagundam Election Work time</p>
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/training.jpg')}}" alt="Training">
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/training2.jpg')}}" alt="Training">
+            </div>
+            <div class="gallery-item">
+                <img src="{{url_for('static',filename='gallery/training3.jpg')}}" alt="Training">
+            </div>
+        </div>    
         <br>
         <hr>
         <h1 style="text-align: left;">Appreciation Certificates</h1>
@@ -243,9 +302,50 @@ a:hover {
                 <p> With District COllector Sir at Vigyan Bhavan, Delhi</p>
             </div>
         </div>    
-        
+    
     </div>
 </div>
+<script>
+    let currentIndex = 0;
+    let galleryImages = [];
+
+    // Open Lightbox
+    function openLightbox(index) {
+        galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+        currentIndex = index;
+        document.getElementById('lightbox').style.display = 'block';
+        showSlide(currentIndex);
+    }
+
+    // Show Slide
+    function showSlide(index) {
+        if (index >= galleryImages.length) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = galleryImages.length - 1;
+        } else {
+            currentIndex = index;
+        }
+        document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
+    }
+
+    // Change Slide
+    function changeSlide(step) {
+        showSlide(currentIndex + step);
+    }
+
+    // Close Lightbox
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // Add event listeners to all gallery images
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.gallery-item img').forEach((img, index) => {
+            img.addEventListener('click', () => openLightbox(index));
+        });
+    });
+</script>
 
 
 {%endblock%}

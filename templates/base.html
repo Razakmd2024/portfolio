@@ -43,6 +43,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="/about">ABOUT</a></li>
+                <li><a href="/projects">PROJECTS</a></li>
                 <li><a href="/gallery">PHOTO GALLERY</a></li>
                 <li><a href="/contact">CONTACT</a></li>
             </ul>
@@ -60,12 +61,13 @@
 <footer>
     <p>&copy; 2025 Razak. All rights reserved.</p>
 </footer>
-<!-- Lightbox HTML placed here correctly -->
-<div id="lightbox" class="lightbox">
-    <span class="lightbox-close">&times;</span>
+<!-- Lightbox HTML -->
+<div class="lightbox" id="lightbox">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
     <img class="lightbox-content" id="lightbox-img" />
+    <a class="lightbox-prev" onclick="changeSlide(-1)">&#10094;</a>
+    <a class="lightbox-next" onclick="changeSlide(1)">&#10095;</a>
 </div>
-
 <!-- Lightbox script placed here correctly -->
 <script>
     // Get lightbox elements

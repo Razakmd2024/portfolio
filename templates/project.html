@@ -1,0 +1,297 @@
+{%extends "base.html"%}
+{%block title%}Photo Gallery{%endblock%}
+{% block head %}
+{{ super() }}
+<style>
+    
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+.page_content {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+h1, h2 {
+    color: #4caf50;
+    margin-top: 0;
+}
+
+.about-section {
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 2px solid #4caf50;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+a {
+    color: #4caf50;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center; /* Add this if needed */
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+.gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            text-align: center;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .gallery-item img {
+            width: 100%; /* Ensures the width takes up the container */
+            height: 250px;  /* Set a fixed height */
+            object-fit: cover; /* Ensures the image maintains its aspect ratio and fills the area */
+            border-radius: 8px;
+        }
+
+        .gallery-item p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+    /* Lightbox Styles */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+}
+
+.lightbox-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    border: 3px solid #fff;
+    border-radius: 8px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.lightbox-close:hover,
+.lightbox-close:focus {
+    color: #ccc;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Lightbox Navigation Buttons */
+.lightbox-prev,
+.lightbox-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    transition: 0.3s;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+/* Position of prev button (left side) */
+.lightbox-prev {
+    left: 20px;
+    border-radius: 3px 0 0 3px;
+}
+
+/* Position of next button (right side) */
+.lightbox-next {
+    right: 20px;
+    border-radius: 3px 0 0 3px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.btn-download {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #2196f3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-download:hover {
+    background-color: #1976d2;
+    text-decoration: none;
+}
+
+
+
+</style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{%block page_content%}
+<div class="page_content">
+    <div class="page-header">
+        <h1 style="text-align: center;">MyFirstPowerBIPractice</h1>
+        <div class="gallery-container">
+            <div class ="gallery-item">
+                <img src ="{{url_for('static',filename ='ProjectReport/myPowerBILab.jpg')}}" alt ="myFirstPowerBI"/>
+                <hr>
+                <h2>Download Report</h2>
+                    <p>
+                        You can download complete report by clicking the button below:
+                    </p>
+                <a href="{{url_for('static',filename='ProjectReport/MyFirstPowerBILab.pdf')}}" download="powerBI" class="btn-download">
+                    📄 MyFirstPowerBI
+                </a>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <h1 style="text-align: center;">Code Basics Resume Challenge-Analyse Growth and Present Insights to the Telangana Government</h1>
+        <div class="gallery-container">
+            <div class ="gallery-item">
+                <img src ="{{url_for('static',filename ='ProjectReport/TGgrowth.jpg')}}" alt ="TGgrowth"/>
+                <hr>
+                <h2>Download Report</h2>
+                    <p>
+                        You can download complete report by clicking the button below:
+                    </p>
+                <a href="{{url_for('static',filename='ProjectReport/Telangana_Growth_Analysis.pdf')}}" download="TGgrowth" class="btn-download">
+                    📄 TGgrowthAnalysisReport
+                </a>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <h1 style="text-align: center;">TAX ANALYSIS REPORT</h1>
+        <div class="gallery-container">
+            <div class ="gallery-item">
+                <img src ="{{url_for('static',filename ='ProjectReport/dcb2025.jpg')}}" alt ="DCB"/>
+                <hr>
+            </div>
+        </div>
+        <br>
+        <hr>
+        <h1 style="text-align: center;">MACHINE LEARNING PROJECTS</h1>
+        <div class="gallery-container">
+            <div class ="gallery-item">
+                <ul>
+                   <li><a href="https://www.kaggle.com/code/razakmd/staff-requirement-predication"><h3 style="color:violet;text-align: left;">MyFirstMachineLearningProjectOnKaggle</h3></a></li> 
+                   <li><a href="https://www.kaggle.com/code/razakmd/machine-learning-house-pricepredication"><h3 style="color:violet;text-align: left;">MySecondMachineLearningProjectOnKaggle</h3></a></li> 
+                </ul>
+                
+                <hr>
+            </div>
+        </div>
+
+        <!--page header closed line-->   
+    </div>
+</div>
+<script>
+    let currentIndex = 0;
+    let galleryImages = [];
+
+    // Open Lightbox
+    function openLightbox(index) {
+        galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+        currentIndex = index;
+        document.getElementById('lightbox').style.display = 'block';
+        showSlide(currentIndex);
+    }
+
+    // Show Slide
+    function showSlide(index) {
+        if (index >= galleryImages.length) {
+            currentIndex = 0;
+        } else if (index < 0) {
+            currentIndex = galleryImages.length - 1;
+        } else {
+            currentIndex = index;
+        }
+        document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
+    }
+
+    // Change Slide
+    function changeSlide(step) {
+        showSlide(currentIndex + step);
+    }
+
+    // Close Lightbox
+    function closeLightbox() {
+        document.getElementById('lightbox').style.display = 'none';
+    }
+
+    // Add event listeners to all gallery images
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.gallery-item img').forEach((img, index) => {
+            img.addEventListener('click', () => openLightbox(index));
+        });
+    });
+</script>
+
+
+{%endblock%}

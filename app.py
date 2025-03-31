@@ -24,6 +24,9 @@ def contact():
 @app.route("/gallery")
 def gallery():
     return render_template("gallery.html")
+@app.route("/projects")
+def project():
+    return render_template("project.html")
 
 
 if __name__ == "__main__":
