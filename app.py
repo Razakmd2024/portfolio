@@ -9,10 +9,27 @@ app.config['SECRET_KEY']="@2025"
 app.config['SEND_FILE_MAX_AGE_DEFAULT']=0
 app.config['TIMEOUT']=300 
 
+# Create a file counter.txt and initialize it with 0
+def get_visitor_count():
+    try:
+        with open("counter.txt","r") as file:
+            return int(file.read())
+    except FileNotFoundError:
+        return 0
+
+def increment_visitor_count():
+    count = get_visitor_count() + 1
+    with open("counter.txt","w") as file:
+        file.write(str(count))
+    return count
+
+
+
 
 @app.route("/", methods=['GET'])
 def home():
-    return render_template("home.html")
+    count = increment_visitor_count()
+    return render_template("home.html", visitor_count = count)
 
 @app.route("/about", methods=['GET'])
 def About():
