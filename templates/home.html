@@ -8,7 +8,14 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
-
+.VisitorCount {
+    position: fixed;  /* Fix position relative to viewport */
+    right: 100px;      /* 20px from the right */
+    bottom: 20px;     /* 20px from the bottom */
+    width: 50px;      /* Adjust size as needed */
+    height: 50px;     /* Keep it proportional */
+    z-index: 1000;    /* Ensure it stays above other elements */
+}
 .page_content {
     display: flex;
     height: 100vh;
@@ -64,8 +71,12 @@ p {
         <p>District Project Manager, e-Panchayat, Peddapalli</p>
     </div>
 </div>
+<br>
 <div class="VisitorCount">
-    <p style="text-align: right;">Total Visitors: <strong>{{visitor_count}}</strong></p>
+    <!--<p style="text-align: right;">Total Visitors: <strong>{{visitor_count}}</strong></p>-->
+    <!-- hitwebcounter Code START -->
+<a href="https://www.hitwebcounter.com" target="_blank">
+<img src="https://hitwebcounter.com/counter/counter.php?page=20105256&style=0001&nbdigits=6&type=page&initCount=0" title="Counter Widget" Alt="Visit counter For Websites"   border="0" /></a>  
 </div>
 
 {% endblock %}
